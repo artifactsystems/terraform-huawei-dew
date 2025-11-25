@@ -3,13 +3,13 @@ provider "huaweicloud" {
 }
 
 locals {
-  region = "tr-west-1"
   name   = "kms-ex-${basename(path.cwd)}"
+  region = "tr-west-1"
 
   tags = {
     Example    = local.name
     GithubRepo = "terraform-huawei-dew"
-    GithubOrg  = "terraform-huawei-modules"
+    GithubOrg  = "artifactsystems"
   }
 }
 
