@@ -1,9 +1,9 @@
 output "example_key_id" {
-  value = module.dew.key_id
+  description = "Identifier of the created example DEW key"
+  value       = module.dew.key_id
 }
 
 output "example_aliases" {
-  value = module.dew.aliases
+  description = "Aliases generated for the example DEW key"
+  value       = module.dew.aliases
 }
-
-

@@ -15,5 +15,3 @@ output "aliases" {
   description = "A map of aliases created and their attributes"
   value       = huaweicloud_kms_alias.this
 }
-
-

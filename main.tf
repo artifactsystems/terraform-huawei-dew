@@ -39,5 +39,3 @@ resource "huaweicloud_kms_alias" "this" {
   alias  = each.value.name
   key_id = huaweicloud_kms_key.this[0].id
 }
-
-

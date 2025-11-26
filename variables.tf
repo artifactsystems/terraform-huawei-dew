@@ -82,5 +82,3 @@ variable "aliases" {
   type        = list(string)
   default     = []
 }
-
-
