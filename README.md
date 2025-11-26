@@ -43,3 +43,9 @@ The following resources are planned for future implementation to achieve feature
   - `huaweicloud_kms_cancel_key_deletion` - Cancel scheduled key deletion
   - `huaweicloud_kms_key_update_primary_region` - Update primary region for multi-region keys
   - `huaweicloud_kms_alias_associate` - Associate/disassociate aliases
+
+## Contributing
+
+Report issues/questions/feature requests in the [issues](https://github.com/artifactsystems/terraform-huawei-dew/issues/new) section.
+
+Full contributing [guidelines are covered here](.github/CONTRIBUTING.md).
