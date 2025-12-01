@@ -32,6 +32,28 @@ locals {
   }
 }
 
+################################################################################
+# KPS Keypair
+################################################################################
+
+resource "huaweicloud_kps_keypair" "this" {
+  count = var.create_keypair && var.keypair_name != null ? 1 : 0
+
+  region = var.region
+
+  name        = var.keypair_name
+  scope       = var.keypair_scope
+  description = var.keypair_description
+
+  encryption_type = var.keypair_encryption_type
+  kms_key_id      = var.keypair_kms_key_id
+  kms_key_name    = var.keypair_kms_key_name
+
+  public_key  = var.keypair_public_key
+  private_key = var.keypair_private_key
+  key_file    = var.keypair_key_file
+}
+
 resource "huaweicloud_kms_alias" "this" {
   for_each = var.create ? local.alias_map : {}
 

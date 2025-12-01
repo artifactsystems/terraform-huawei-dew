@@ -1,7 +1,7 @@
 variable "create" {
   description = "Determines whether resources will be created (affects all resources)"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "region" {
@@ -23,6 +23,70 @@ variable "tags" {
 }
 
 ################################################################################
+# KPS Keypair
+################################################################################
+
+variable "create_keypair" {
+  description = "Determines whether a KPS keypair will be created/managed"
+  type        = bool
+  default     = false
+}
+
+variable "keypair_name" {
+  description = "Name of the KPS keypair to create or manage"
+  type        = string
+  default     = null
+}
+
+variable "keypair_scope" {
+  description = "Scope of the keypair: user or account"
+  type        = string
+  default     = "user"
+}
+
+variable "keypair_encryption_type" {
+  description = "Encryption mode for the keypair: default or kms"
+  type        = string
+  default     = null
+}
+
+variable "keypair_kms_key_id" {
+  description = "KMS key ID used to encrypt the keypair private key (when encryption_type is kms)"
+  type        = string
+  default     = null
+}
+
+variable "keypair_kms_key_name" {
+  description = "KMS key name used to encrypt the keypair private key (when encryption_type is kms)"
+  type        = string
+  default     = null
+}
+
+variable "keypair_description" {
+  description = "Description for the KPS keypair"
+  type        = string
+  default     = null
+}
+
+variable "keypair_public_key" {
+  description = "Existing OpenSSH-formatted public key to import as a KPS keypair"
+  type        = string
+  default     = null
+}
+
+variable "keypair_private_key" {
+  description = "Existing OpenSSH-formatted private key to import as a KPS keypair"
+  type        = string
+  default     = null
+}
+
+variable "keypair_key_file" {
+  description = "Path to the private key file to be created for the KPS keypair"
+  type        = string
+  default     = null
+}
+
+################################################################################
 # Key (core)
 ################################################################################
 
@@ -35,6 +99,7 @@ variable "description" {
 variable "key_alias" {
   description = "Primary alias to use when creating the key (required)"
   type        = string
+  default     = null
 }
 
 variable "key_usage" {

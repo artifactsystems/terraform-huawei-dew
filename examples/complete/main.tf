@@ -16,6 +16,8 @@ locals {
 module "dew" {
   source = "../.."
 
+  create = true
+
   key_alias   = "proj/app-primary"
   description = "Complete example key"
   key_spec    = "AES_256"

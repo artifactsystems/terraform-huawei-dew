@@ -8,6 +8,25 @@ output "key_id" {
 }
 
 ################################################################################
+# KPS Keypair
+################################################################################
+
+output "keypair_name" {
+  description = "The name of the KPS keypair"
+  value       = try(huaweicloud_kps_keypair.this[0].name, null)
+}
+
+output "keypair_id" {
+  description = "The ID of the KPS keypair (equals to name)"
+  value       = try(huaweicloud_kps_keypair.this[0].id, null)
+}
+
+output "keypair_fingerprint" {
+  description = "The fingerprint of the KPS keypair"
+  value       = try(huaweicloud_kps_keypair.this[0].fingerprint, null)
+}
+
+################################################################################
 # Aliases
 ################################################################################
 
