@@ -30,6 +30,10 @@ locals {
       name = startswith(name, "alias/") ? name : "alias/${name}"
     }
   }
+
+  csms_kms_key_id = var.csms_kms_key_id != null ? var.csms_kms_key_id : (
+    var.create ? try(huaweicloud_kms_key.this[0].id, null) : null
+  )
 }
 
 ################################################################################
@@ -60,4 +64,24 @@ resource "huaweicloud_kms_alias" "this" {
   region = var.region
   alias  = each.value.name
   key_id = huaweicloud_kms_key.this[0].id
+}
+
+################################################################################
+# CSMS Secret
+################################################################################
+
+resource "huaweicloud_csms_secret" "this" {
+  count = var.create_csms_secret && var.csms_secret_name != null ? 1 : 0
+
+  region = var.region
+
+  name                  = var.csms_secret_name
+  secret_text           = var.csms_secret_text
+  secret_binary         = var.csms_secret_binary
+  description           = var.csms_secret_description
+  secret_type           = var.csms_secret_type
+  kms_key_id            = local.csms_kms_key_id
+  expire_time           = var.csms_expire_time
+  enterprise_project_id = var.enterprise_project_id
+  tags                  = var.csms_tags
 }

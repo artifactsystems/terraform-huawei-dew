@@ -1,23 +1,32 @@
 # HuaweiCloud DEW (Data Encryption Workshop) Terraform Module
 
-Terraform module which creates KMS (Key Management Service) resources on HuaweiCloud.
+Terraform module which creates KMS (Key Management Service) and CSMS (Cloud Secret Management Service) resources on HuaweiCloud.
 
 ## Features
 
-This module supports the following DEW/KMS features:
+This module supports the following DEW features:
 
+### KMS (Key Management Service)
 - ✅ **KMS Key Management**: Create and manage symmetric and asymmetric encryption keys
 - ✅ **Key Rotation**: Automatic key rotation with configurable intervals (30-365 days)
 - ✅ **Key Aliases**: Multiple aliases support for easier key identification
 - ✅ **Key Algorithms**: Support for AES_256, SM4, RSA (2048/3072/4096), EC (P256/P384), and SM2
 - ✅ **Key Usage Types**: ENCRYPT_DECRYPT and SIGN_VERIFY operations
 - ✅ **Key Lifecycle**: Configurable deletion window (7-1096 days)
+- ✅ **KPS Keypair**: Create and manage keypairs for ECS instances
+
+### CSMS (Cloud Secret Management Service)
+- ✅ **CSMS Secret Management**: Create and manage secrets (text and binary)
+- ✅ **KMS Integration**: Use KMS keys to encrypt secrets (can reference keys created in this module)
+- ✅ **Secret Expiration**: Set expiration times for secrets
 - ✅ **Tag Management**: Comprehensive tagging support for all resources
 - ✅ **Enterprise Project Integration**: Support for HuaweiCloud Enterprise Projects
 
 ## Examples
 
 - [complete](./examples/complete) - Complete KMS key setup with rotation and aliases
+- [keypair](./examples/keypair) - KPS keypair creation example
+- [csms-secret](./examples/csms-secret) - CSMS secret management examples (plaintext, JSON, KMS integration)
 
 ## Missing Resources (Roadmap)
 

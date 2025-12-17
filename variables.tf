@@ -147,3 +147,63 @@ variable "aliases" {
   type        = list(string)
   default     = []
 }
+
+################################################################################
+# CSMS Secret
+################################################################################
+
+variable "create_csms_secret" {
+  description = "Determines whether a CSMS secret will be created/managed"
+  type        = bool
+  default     = false
+}
+
+variable "csms_secret_name" {
+  description = "Name of the CSMS secret to create or manage"
+  type        = string
+  default     = null
+}
+
+variable "csms_secret_text" {
+  description = "Plaintext of a text secret. CSMS encrypts the plaintext and stores it in the initial version. Maximum size is 32 KB. Either secret_text or secret_binary must be specified, but not both"
+  type        = string
+  default     = null
+  sensitive   = true
+}
+
+variable "csms_secret_binary" {
+  description = "Plaintext of a binary secret encoded using Base64. CSMS encrypts the plaintext and stores it in the initial version. Maximum size is 32 KB. Either secret_text or secret_binary must be specified, but not both"
+  type        = string
+  default     = null
+  sensitive   = true
+}
+
+variable "csms_secret_description" {
+  description = "Description of the CSMS secret"
+  type        = string
+  default     = null
+}
+
+variable "csms_secret_type" {
+  description = "Type of the secret. Currently, only COMMON is supported"
+  type        = string
+  default     = "COMMON"
+}
+
+variable "csms_kms_key_id" {
+  description = "ID of the KMS key used to encrypt secrets. If not specified, the default master key csms/default will be used. Can reference a KMS key created in this module"
+  type        = string
+  default     = null
+}
+
+variable "csms_expire_time" {
+  description = "Expiration time of a secret in milliseconds (timestamp format). Can only be edited when status is ENABLED. Must be greater than current time. Ensure last three digits are 0 (e.g., 1729243021000)"
+  type        = number
+  default     = null
+}
+
+variable "csms_tags" {
+  description = "A map of tags to add to the CSMS secret"
+  type        = map(string)
+  default     = {}
+}
