@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0](https://github.com/artifactsystems/terraform-huawei-dew/compare/v1.1.0...v1.2.0) (2025-12-17)
+
+### Features
+
+* add CSMS (Cloud Secret Management Service) support ([47a9599](https://github.com/artifactsystems/terraform-huawei-dew/commit/47a9599de447d8450bada1729c55307ef3cc9d56))
+
 ## [1.1.0](https://github.com/artifactsystems/terraform-huawei-dew/compare/v1.0.0...v1.1.0) (2025-12-01)
 
 ### Features
